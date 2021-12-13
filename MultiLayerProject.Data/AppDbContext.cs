@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MultiLayerProject.Core.Models;
+using MultiLayerProject.Data.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,7 +18,8 @@ namespace MultiLayerProject.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new CategoryConfiguration());
         }
     }
 }
