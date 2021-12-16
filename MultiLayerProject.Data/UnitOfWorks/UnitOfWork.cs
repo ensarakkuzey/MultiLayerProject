@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MultiLayerProject.Data.UnitOfWorks
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private readonly AppDbContext _context;
         private ProductRepository _productRepository;
