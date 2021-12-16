@@ -31,7 +31,10 @@ namespace MultiLayerProject.API
         {
             services.AddDbContext<AppDbContext>(options =>
             {
-                options.UseSqlServer(Configuration["ConnectionStrings:ConnectionStr"].ToString());
+                options.UseSqlServer(Configuration["ConnectionStrings:ConnectionStr"].ToString(), o =>
+                {
+                    o.MigrationsAssembly("MultiLayerProject.Data");
+                });
             });
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
