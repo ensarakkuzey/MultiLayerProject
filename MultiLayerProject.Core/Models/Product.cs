@@ -14,6 +14,6 @@ namespace MultiLayerProject.Core.Models
         public bool IsDeleted { get; set; }
         public string InnerBarcode { get; set; }
 
-        public virtual Category Category { get; set; }
+        public virtual Category Category { get; set; } 
     }
 }
