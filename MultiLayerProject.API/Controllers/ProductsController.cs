@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiLayerProject.API.DTOs;
+using MultiLayerProject.API.Filters;
 using MultiLayerProject.Core.Models;
 using MultiLayerProject.Core.Services;
 using System;
@@ -48,6 +49,7 @@ namespace MultiLayerProject.API.Controllers
             return Ok(_mapper.Map<ProductWithCategoryDTO>(product));
         }
 
+        [ValidationFilter]
         [HttpPost]
         public async Task<IActionResult> Save(ProductDTO productDTO)
         {

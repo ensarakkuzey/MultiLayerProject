@@ -29,7 +29,7 @@ namespace MultiLayerProject.API.Controllers
         {
             var people = await _personService.GetAllAsync();
 
-            return Ok(people);
+            return Ok(people); 
         }
 
         [HttpPost]
