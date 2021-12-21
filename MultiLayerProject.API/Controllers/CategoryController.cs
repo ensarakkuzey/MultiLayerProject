@@ -27,7 +27,16 @@ namespace MultiLayerProject.API.Controllers
         public async Task<IActionResult> GetAll()
         {
             var categories = _mapper.Map<IEnumerable<CategoryDTO>>(await _categoryService.GetAllAsync());
+
             return Ok(categories);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var category =_mapper.Map<CategoryDTO>(await _categoryService.GetByIdAsync(id));
+
+            return Ok(category);
         }
 
     }
