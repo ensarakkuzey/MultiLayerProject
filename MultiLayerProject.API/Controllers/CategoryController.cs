@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiLayerProject.API.DTOs;
+using MultiLayerProject.Core.Models;
 using MultiLayerProject.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,14 @@ namespace MultiLayerProject.API.Controllers
             var category =_mapper.Map<CategoryDTO>(await _categoryService.GetByIdAsync(id));
 
             return Ok(category);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Save(CategoryDTO categoryDTO)
+        {
+            var newCategory = _mapper.Map<CategoryDTO>(await _categoryService.AddAsync(_mapper.Map<Category>(categoryDTO)));
+
+            return Created(String.Empty, newCategory);
         }
 
     }
