@@ -35,9 +35,17 @@ namespace MultiLayerProject.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var category =_mapper.Map<CategoryDTO>(await _categoryService.GetByIdAsync(id));
+            var category = _mapper.Map<CategoryDTO>(await _categoryService.GetByIdAsync(id));
 
             return Ok(category);
+        }
+
+        [HttpGet("{id}/products")]
+        public async Task<IActionResult> GetWithProductsById(int id)
+        {
+            var category = await _categoryService.GetWithProductsByIdAsync(id);
+
+            return Ok(_mapper.Map<CategoryWithProductsDTO>(category));
         }
 
         [HttpPost]
@@ -47,6 +55,24 @@ namespace MultiLayerProject.API.Controllers
 
             return Created(String.Empty, newCategory);
         }
+
+        [HttpPut]
+        public IActionResult Update(CategoryDTO categoryDTO)
+        {
+            var category = _categoryService.Update(_mapper.Map<Category>(categoryDTO));
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Remove(int id)
+        {
+            var category = _categoryService.GetByIdAsync(id).Result;
+            _categoryService.Remove(category);
+
+            return NoContent();
+        }
+
 
     }
 }

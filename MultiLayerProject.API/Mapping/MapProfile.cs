@@ -14,6 +14,12 @@ namespace MultiLayerProject.API.Mapping
         {
             CreateMap<Category, CategoryDTO>();
             CreateMap<CategoryDTO, Category>();
+            CreateMap<Category, CategoryWithProductsDTO>();
+            CreateMap<CategoryWithProductsDTO, Category>();
+            CreateMap<Product, ProductDTO>();
+            CreateMap<ProductDTO, Product>();
+
+
         }
     }
 }
