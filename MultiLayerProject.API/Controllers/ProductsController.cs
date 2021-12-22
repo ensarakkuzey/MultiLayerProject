@@ -33,6 +33,7 @@ namespace MultiLayerProject.API.Controllers
             return Ok(products);
         }
 
+        [ServiceFilter(typeof(ProductNotFoundFilter))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -41,6 +42,7 @@ namespace MultiLayerProject.API.Controllers
             return Ok(product);
         }
 
+        [ServiceFilter(typeof(ProductNotFoundFilter))]
         [HttpGet("{id}/category")]
         public async Task<IActionResult> GetWithProductsById(int id)
         {
@@ -66,6 +68,7 @@ namespace MultiLayerProject.API.Controllers
             return NoContent();
         }
 
+        [ServiceFilter(typeof(ProductNotFoundFilter))]
         [HttpDelete("{id}")]
         public IActionResult Remove(int id)
         {

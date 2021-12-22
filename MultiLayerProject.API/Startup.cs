@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using MultiLayerProject.API.Filters;
 
 namespace MultiLayerProject.API
 {
@@ -35,6 +36,9 @@ namespace MultiLayerProject.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddScoped<ProductNotFoundFilter>();
+            services.AddScoped<CategoryNotFoundFilter>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(IService<>), typeof(Service<>));

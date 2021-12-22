@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiLayerProject.API.DTOs;
+using MultiLayerProject.API.Filters;
 using MultiLayerProject.Core.Models;
 using MultiLayerProject.Core.Services;
 using System;
@@ -32,6 +33,7 @@ namespace MultiLayerProject.API.Controllers
             return Ok(categories);
         }
 
+        [ServiceFilter(typeof(CategoryNotFoundFilter))]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -40,6 +42,7 @@ namespace MultiLayerProject.API.Controllers
             return Ok(category);
         }
 
+        [ServiceFilter(typeof(CategoryNotFoundFilter))]
         [HttpGet("{id}/products")]
         public async Task<IActionResult> GetWithProductsById(int id)
         {
@@ -48,6 +51,7 @@ namespace MultiLayerProject.API.Controllers
             return Ok(_mapper.Map<CategoryWithProductsDTO>(category));
         }
 
+        [ValidationFilter]
         [HttpPost]
         public async Task<IActionResult> Save(CategoryDTO categoryDTO)
         {
@@ -64,6 +68,7 @@ namespace MultiLayerProject.API.Controllers
             return NoContent();
         }
 
+        [ServiceFilter(typeof(CategoryNotFoundFilter))]
         [HttpDelete("{id}")]
         public IActionResult Remove(int id)
         {
