@@ -63,6 +63,11 @@ namespace MultiLayerProject.API.Controllers
         [HttpPut]
         public IActionResult Update(ProductDTO productDTO)
         {
+            if(productDTO.Id < 1)
+            {
+                throw new Exception("ID alanı gereklidir.");
+            }
+
             var product = _productService.Update(_mapper.Map<Product>(productDTO));
 
             return NoContent();

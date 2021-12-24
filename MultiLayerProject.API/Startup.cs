@@ -20,6 +20,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using MultiLayerProject.API.Filters;
+using Microsoft.AspNetCore.Diagnostics;
+using MultiLayerProject.API.DTOs;
+using Newtonsoft.Json;
+using Microsoft.AspNetCore.Http;
+using MultiLayerProject.API.Extensions;
 
 namespace MultiLayerProject.API
 {
@@ -68,6 +73,8 @@ namespace MultiLayerProject.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCustomException();
 
             app.UseHttpsRedirection();
 
