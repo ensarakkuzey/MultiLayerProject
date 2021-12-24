@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using MultiLayerProject.Core.Models;
 using MultiLayerProject.Core.Services;
+using MultiLayerProject.Website.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +21,24 @@ namespace MultiLayerProject.Website.Controllers
             _mapper = mapper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            var categories = _mapper.Map<IEnumerable<CategoryDTO>>(await _categoryService.GetAllAsync());
+
+            return View(categories);
+        }
+
+        public IActionResult Create()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CategoryDTO categoryDTO)
+        {
+            await _categoryService.AddAsync(_mapper.Map<Category>(categoryDTO));
+
+            return RedirectToAction("Index");
         }
     }
 }
