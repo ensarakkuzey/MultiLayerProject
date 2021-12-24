@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLayerProject.API", "MultiLayerProject.API\MultiLayerProject.API.csproj", "{E3A6E261-8BE0-4A31-A2C4-453ACF4A6F7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLayerProject.API", "MultiLayerProject.API\MultiLayerProject.API.csproj", "{E3A6E261-8BE0-4A31-A2C4-453ACF4A6F7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLayerProject.Core", "MultiLayerProject.Core\MultiLayerProject.Core.csproj", "{5B98CDA5-49E3-4629-BB12-D09F29F7255B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLayerProject.Core", "MultiLayerProject.Core\MultiLayerProject.Core.csproj", "{5B98CDA5-49E3-4629-BB12-D09F29F7255B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLayerProject.Data", "MultiLayerProject.Data\MultiLayerProject.Data.csproj", "{DE1F163D-B36F-431A-BBFC-2E2B54E7EE31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLayerProject.Data", "MultiLayerProject.Data\MultiLayerProject.Data.csproj", "{DE1F163D-B36F-431A-BBFC-2E2B54E7EE31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLayerProject.Service", "MultiLayerProject.Service\MultiLayerProject.Service.csproj", "{46662553-8DA5-4F91-B3BA-716FC332157E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiLayerProject.Service", "MultiLayerProject.Service\MultiLayerProject.Service.csproj", "{46662553-8DA5-4F91-B3BA-716FC332157E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiLayerProject.Website", "MultiLayerProject.Website\MultiLayerProject.Website.csproj", "{61342407-DF3A-482A-8C4F-763CBA3E7DF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{46662553-8DA5-4F91-B3BA-716FC332157E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46662553-8DA5-4F91-B3BA-716FC332157E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46662553-8DA5-4F91-B3BA-716FC332157E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61342407-DF3A-482A-8C4F-763CBA3E7DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61342407-DF3A-482A-8C4F-763CBA3E7DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61342407-DF3A-482A-8C4F-763CBA3E7DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61342407-DF3A-482A-8C4F-763CBA3E7DF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
