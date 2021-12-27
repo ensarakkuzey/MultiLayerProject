@@ -40,5 +40,20 @@ namespace MultiLayerProject.Website.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Update(int id)
+        {
+            var category = _mapper.Map<CategoryDTO>(await _categoryService.GetByIdAsync(id));
+
+            return View(category);      
+        }
+
+        [HttpPost]
+        public IActionResult Update(CategoryDTO categoryDTO)
+        {
+            _categoryService.Update(_mapper.Map<Category>(categoryDTO));
+
+            return RedirectToAction("Index");
+        }
     }
 }

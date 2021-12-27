@@ -1,0 +1,21 @@
+﻿@model CategoryDTO 
+@{
+}
+
+<h1>Update "@Model.Name" Category</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Update">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name">Category Name : </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary"></input>
+            </div>
+        </form>
+    </div>
+</div>
