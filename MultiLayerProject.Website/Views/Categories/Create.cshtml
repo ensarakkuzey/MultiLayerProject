@@ -1,4 +1,5 @@
-﻿@{
+﻿@model CategoryDTO
+@{
     ViewData["Title"] = "Create New Category";
 }
 
@@ -9,7 +10,12 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for=""></label>
+                <label asp-for="Name">Category Name : </label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add" class="btn btn-primary"></input>
             </div>
         </form>
     </div>
