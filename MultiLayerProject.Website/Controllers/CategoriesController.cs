@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MultiLayerProject.Core.Models;
 using MultiLayerProject.Core.Services;
 using MultiLayerProject.Website.DTOs;
+using MultiLayerProject.Website.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,7 @@ namespace MultiLayerProject.Website.Controllers
             return RedirectToAction("Index");
         }
 
+        [ServiceFilter(typeof(CategoryNotFoundFilter))]
         public async Task<IActionResult> Delete(int id)
         {
             var category = await _categoryService.GetByIdAsync(id);

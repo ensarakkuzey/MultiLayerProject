@@ -12,6 +12,7 @@ using MultiLayerProject.Data;
 using MultiLayerProject.Data.Repositories;
 using MultiLayerProject.Data.UnitOfWorks;
 using MultiLayerProject.Service.Services;
+using MultiLayerProject.Website.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,8 @@ namespace MultiLayerProject.Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<CategoryNotFoundFilter>();
+            services.AddScoped<ProductNotFoundFilter>();
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using MultiLayerProject.Website.DTOs;
 using MultiLayerProject.Website.Models;
 using System;
 using System.Collections.Generic;
@@ -29,9 +30,9 @@ namespace MultiLayerProject.Website.Controllers
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Error(ErrorDTO errorDTO)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(errorDTO);
         }
     }
 }
