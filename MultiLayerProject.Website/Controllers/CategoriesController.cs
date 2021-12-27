@@ -55,5 +55,13 @@ namespace MultiLayerProject.Website.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            var category = await _categoryService.GetByIdAsync(id);
+            _categoryService.Remove(category);
+
+            return RedirectToAction("Index");
+        }
     }
 }
