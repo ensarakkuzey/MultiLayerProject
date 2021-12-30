@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiLayerProject.Core.Models;
 using MultiLayerProject.Core.Services;
+using MultiLayerProject.Website.ApiServices;
 using MultiLayerProject.Website.DTOs;
 using MultiLayerProject.Website.Filters;
 using System;
@@ -14,17 +15,19 @@ namespace MultiLayerProject.Website.Controllers
     public class CategoriesController : Controller
     {
         private readonly ICategoryService _categoryService;
+        private readonly CategoryApiService _categoryApiService;
         private readonly IMapper _mapper;
 
-        public CategoriesController(ICategoryService categoryService, IMapper mapper)
+        public CategoriesController(ICategoryService categoryService, IMapper mapper, CategoryApiService categoryApiService)
         {
             _categoryService = categoryService;
             _mapper = mapper;
+            _categoryApiService = categoryApiService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var categories = _mapper.Map<IEnumerable<CategoryDTO>>(await _categoryService.GetAllAsync());
+            var categories = _mapper.Map<IEnumerable<CategoryDTO>>(await _categoryApiService.GetAllAsync());
 
             return View(categories);
         }
