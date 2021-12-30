@@ -1,17 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MultiLayerProject.Core.Repositories;
-using MultiLayerProject.Core.Services;
-using MultiLayerProject.Core.UnitOfWorks;
-using MultiLayerProject.Data;
-using MultiLayerProject.Data.Repositories;
-using MultiLayerProject.Data.UnitOfWorks;
-using MultiLayerProject.Service.Services;
 using MultiLayerProject.Website.ApiServices;
 using MultiLayerProject.Website.Filters;
 using System;
@@ -39,22 +31,7 @@ namespace MultiLayerProject.Website
             });
 
             services.AddScoped<CategoryNotFoundFilter>();
-            services.AddScoped<ProductNotFoundFilter>();
             services.AddAutoMapper(typeof(Startup));
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-            services.AddScoped(typeof(IService<>), typeof(Service<>));
-            services.AddScoped<ICategoryService, CategoryService>();
-            services.AddScoped<IProductService, ProductService>();
-
-            services.AddDbContext<AppDbContext>(options =>
-            {
-                options.UseSqlServer(Configuration["ConnectionStrings:ConnectionStr"].ToString(), o =>
-                {
-                    o.MigrationsAssembly("MultiLayerProject.Data");
-                });
-            });
-
             services.AddControllersWithViews();
         }
 
