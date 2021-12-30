@@ -47,15 +47,15 @@ namespace MultiLayerProject.Website.Controllers
 
         public async Task<IActionResult> Update(int id)
         {
-            var category = _mapper.Map<CategoryDTO>(await _categoryService.GetByIdAsync(id));
+            var category = _mapper.Map<CategoryDTO>(await _categoryApiService.GetByIdAsync(id));
 
             return View(category);      
         }
 
         [HttpPost]
-        public IActionResult Update(CategoryDTO categoryDTO)
+        public async Task<IActionResult> Update(CategoryDTO categoryDTO)
         {
-            _categoryService.Update(_mapper.Map<Category>(categoryDTO));
+            await _categoryApiService.Update(categoryDTO);
 
             return RedirectToAction("Index");
         }
@@ -63,8 +63,7 @@ namespace MultiLayerProject.Website.Controllers
         [ServiceFilter(typeof(CategoryNotFoundFilter))]
         public async Task<IActionResult> Delete(int id)
         {
-            var category = await _categoryService.GetByIdAsync(id);
-            _categoryService.Remove(category);
+            await _categoryApiService.Remove(id);
 
             return RedirectToAction("Index");
         }

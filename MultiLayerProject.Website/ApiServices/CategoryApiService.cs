@@ -54,5 +54,49 @@ namespace MultiLayerProject.Website.ApiServices
             }
 
         }
+
+        public async Task<CategoryDTO> GetByIdAsync(int id)
+        {
+            var response = await _httpClient.GetAsync($"categories/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return JsonConvert.DeserializeObject<CategoryDTO>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> Update(CategoryDTO categoryDTO)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(categoryDTO), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync("categories", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> Remove(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"categories/{id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
