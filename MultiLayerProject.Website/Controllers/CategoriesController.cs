@@ -40,7 +40,7 @@ namespace MultiLayerProject.Website.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryDTO categoryDTO)
         {
-            await _categoryService.AddAsync(_mapper.Map<Category>(categoryDTO));
+            await _categoryApiService.AddAsync(categoryDTO);
 
             return RedirectToAction("Index");
         }

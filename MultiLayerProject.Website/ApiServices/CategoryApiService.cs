@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MultiLayerProject.Website.ApiServices
@@ -33,6 +34,25 @@ namespace MultiLayerProject.Website.ApiServices
             }
 
             return categoryDTOs;
+        }
+
+        public async Task<CategoryDTO> AddAsync(CategoryDTO categoryDTO)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(categoryDTO), Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("categories", stringContent);
+
+            if (response.IsSuccessStatusCode)
+            {
+                categoryDTO = JsonConvert.DeserializeObject<CategoryDTO>(await response.Content.ReadAsStringAsync());
+
+                return categoryDTO;
+            }
+            else
+            {
+                return null;
+            }
+
         }
     }
 }
